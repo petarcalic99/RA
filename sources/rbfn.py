@@ -49,24 +49,41 @@ class RBFN(Gaussians):
         x = np.array(x_data)
         y = np.array(y_data)
         X = self.phi_output(x)
+        X = X.transpose()
+        #X = np.hstack((X, np.ones((X.shape[0], 1))))   #Pourquoi on n'a pas besoin de faire ca?
+        #id au train du line
+        
+        theta_opt = np.dot(np.dot(np.linalg.inv(np.dot(X.transpose(),X)),np.transpose(X)), y_data) 
+        self.theta = theta_opt           
+        print("theta", self.theta)
+        
 
-        #TODO: Fill this
-
+    #comme ilfait la meme chose on y reviendra apres si temps
     # ------ batch least squares (calculation approach) ---------
     def train_ls2(self, x_data, y_data):
         a = np.zeros(shape=(self.nb_features, self.nb_features))
         b = np.zeros(self.nb_features)
-        #for i in range(len(x_data)):
+     #   for i in range(len(x_data)):
             
-        #TODO: Fill this
+
+        
 
     # -------- gradient descent -----------------
    
-    def train_gd(self, x, y, alpha):
-            
-        #TODO: Fill this
+    def train_gd(self, x, y, alpha):        
+        X = self.phi_output(x)
+        
+        X = X.transpose()
+        X = X[0]    #pourquoi on doit faire ca? je ne comprend pas:/
+        
+            #une seule iteration ici
+        self.theta = self.theta + np.dot(alpha*(y - np.dot(np.transpose(X) , self.theta)), X)          
+        
+        
+
+
     # -------- recursive least squares -----------------
-   # def train_rls(self, x, y):
+    def train_rls(self, x, y):
         phi = self.phi_output(x)
         self.a = self.a + np.dot(phi, phi.transpose())
         self.b = self.b + y * phi.transpose()[0]
@@ -112,8 +129,8 @@ class RBFN(Gaussians):
             for j in xs:
                 temp.append(self.feature(j, i))
             z2.append(temp)
-
-        plt.plot(x_data, y_data, 'o', markersize=3, color='lightgreen')
+                        #j'ai pris la liberte de change la couleur de lightgreen en noir.
+        plt.plot(x_data, y_data, 'o', markersize=3, color='black')
         plt.plot(xs, z, lw=3, color='red')
         for i in range(self.nb_features):
             plt.plot(xs, z2[i])
