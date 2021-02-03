@@ -96,15 +96,15 @@ class Main:
             self.y_data.append(y)
 
             # Comment the ones you don't want to use
-            #model.train_gd(x, y, alpha=0.5)
+            model.train_gd(x, y, alpha=0.5)
             #model.train_rls(x, y)
-            model.train_rls_sherman_morrison(x, y)
+            #model.train_rls_sherman_morrison(x, y)
 
         print("RBFN Incr time:", time.process_time() - start)
         model.plot(self.x_data, self.y_data)
 
     def approx_lwr_batch(self):
-        model = LWR(nb_features=10)
+        model = LWR(nb_features=10)     #modifier le nombre de segments, pour 40 le temps de calc est assez G..
         self.make_nonlinear_batch_data()
 
         start = time.process_time()
@@ -115,6 +115,6 @@ class Main:
 if __name__ == '__main__':
     m = Main()
     #m.approx_linear_batch()
-    #m.approx_rbfn_batch()
-    m.approx_rbfn_iterative()
-   # m.approx_lwr_batch()
+    m.approx_rbfn_batch()
+    #m.approx_rbfn_iterative()
+    #m.approx_lwr_batch()

@@ -75,11 +75,11 @@ class LWR(Gaussians):
                 self.theta[i, k] = result[i, 0]
 
 
-    def plot(self, x_data, y_data):
+    def plot(self, x_data, y_data):       #Comment augmenter le nombre de segments?
         xs = np.linspace(0.0, 1.0, 1000)
         z = self.f(xs)
 
-        plt.plot(x_data, y_data, 'o', markersize=3, color='lightgreen')
+        plt.plot(x_data, y_data, 'o', markersize=3, color='black')   #on change la couleur 
         plt.plot(xs, z, lw=2, color='red')
         for i in range(self.nb_features):
             ww = (1.0 - 0.0) / self.nb_features / 2.

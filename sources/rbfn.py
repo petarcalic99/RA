@@ -53,7 +53,7 @@ class RBFN(Gaussians):
         #X = np.hstack((X, np.ones((X.shape[0], 1))))   #Pourquoi on n'a pas besoin de faire ca?
         #id au train du line
         
-        theta_opt = np.dot(np.dot(np.linalg.inv(np.dot(X.transpose(),X)),np.transpose(X)), y_data) 
+        theta_opt = np.dot(np.dot(np.linalg.inv(np.dot(X.transpose(),X)),np.transpose(X)), y) 
         self.theta = theta_opt           
         print("theta", self.theta)
         

@@ -35,7 +35,8 @@ class SampleGenerator:
 
         """
         y = self.c3 * x + self.c1
-        sigma = 0.5
+        sigma = 0.5       #Pour produire plus de bruits
         noise = sigma * np.random.random()
+        print(noise)
         y_noisy = y + noise
         return y_noisy
