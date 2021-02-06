@@ -6,6 +6,7 @@ from rbfn import RBFN
 from lwr import LWR
 from line import Line
 from sample_generator import SampleGenerator
+import matplotlib.pyplot as plt
 
 
 class Main:
@@ -60,10 +61,32 @@ class Main:
         model.plot(self.x_data, self.y_data)
 
         #Pour la q3 on modifi le coef
+        
+        start = time.process_time()
+        model.train(self.x_data, self.y_data)
+        print("LLS time:", time.process_time() - start)
+        model.plot(self.x_data, self.y_data, "LLS")
+
         start = time.process_time()
         model.train_regularized(self.x_data, self.y_data, coef=0.1)
         print("regularized LLS :", time.process_time() - start)
-        model.plot(self.x_data, self.y_data)
+        model.plot(self.x_data, self.y_data, "coeff = 0.1")
+        
+        start = time.process_time()
+        model.train_regularized(self.x_data, self.y_data, coef=1)
+        print("regularized LLS :", time.process_time() - start)
+        model.plot(self.x_data, self.y_data, "coef = 1")
+        
+        start = time.process_time()
+        model.train_regularized(self.x_data, self.y_data, coef=0.01)
+        print("regularized LLS :", time.process_time() - start)
+        model.plot(self.x_data, self.y_data, "coef 0.01")
+
+        start = time.process_time()
+        model.train_regularized(self.x_data, self.y_data, coef=0.5)
+        print("regularized LLS :", time.process_time() - start)
+        model.plot(self.x_data, self.y_data, "coef 0.5")
+        plt.show()
 
     def approx_rbfn_batch(self):
         model = RBFN(nb_features=10)     #changer la valeur des features
@@ -114,7 +137,7 @@ class Main:
 
 if __name__ == '__main__':
     m = Main()
-    #m.approx_linear_batch()
-    m.approx_rbfn_batch()
+    m.approx_linear_batchv2()
+    #m.approx_rbfn_batch()
     #m.approx_rbfn_iterative()
     #m.approx_lwr_batch()

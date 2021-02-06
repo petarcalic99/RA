@@ -80,3 +80,12 @@ class Line:
         plt.plot(x_data, y_data, 'o', markersize=3, color='lightgreen')
         plt.plot(xs, z, lw=2, color='red')
         plt.show()
+
+
+    def plot(self, x_data, y_data, label):
+        xs = np.linspace(0.0, 1.0, 1000)
+        z = self.f(xs)
+
+        plt.plot(x_data, y_data, 'o', markersize=3, color='lightgreen')
+        plt.plot(xs, z, lw=2, label = label)
+        plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
