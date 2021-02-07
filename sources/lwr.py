@@ -90,3 +90,9 @@ class LWR(Gaussians):
                 z2.append(self.feature(j, i))
             plt.plot(xstmp, z2, lw=2, color='blue', ls='-')
         plt.show()
+    
+    def calcerr(self, x_data ,y_data , batchsize):
+        sumerr = 0
+        for i in range(batchsize):
+            sumerr = sumerr + abs(y_data[i] - self.f(x_data[i]))
+        return sumerr/ batchsize
