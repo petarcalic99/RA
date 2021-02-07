@@ -137,7 +137,7 @@ class Main:
 
 if __name__ == '__main__':
     m = Main()
-    m.approx_linear_batchv2()
+    m.approx_linear_batch()
     #m.approx_rbfn_batch()
     #m.approx_rbfn_iterative()
     #m.approx_lwr_batch()
