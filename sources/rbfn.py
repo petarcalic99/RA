@@ -137,7 +137,6 @@ class RBFN(Gaussians):
         plt.show()
     
     def calcerr(self, x_data ,y_data , batchsize):
-        print(np.shape(x_data) ,np.shape(y_data) , batchsize)
         sumerr = 0
         for i in range(batchsize):
             sumerr = sumerr + abs(y_data[i] - self.f(x_data[i]))
