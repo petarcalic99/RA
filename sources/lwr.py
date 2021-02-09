@@ -79,7 +79,7 @@ class LWR(Gaussians):
         xs = np.linspace(0.0, 1.0, 1000)
         z = self.f(xs)
 
-        plt.plot(x_data, y_data, 'o', markersize=3, color='black')   #on change la couleur 
+        plt.plot(x_data, y_data, 'o', markersize=3, color='lightgreen')   #on change la couleur 
         plt.plot(xs, z, lw=2, color='red')
         for i in range(self.nb_features):
             ww = (1.0 - 0.0) / self.nb_features / 2.

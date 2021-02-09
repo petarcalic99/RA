@@ -130,7 +130,7 @@ class RBFN(Gaussians):
                 temp.append(self.feature(j, i))
             z2.append(temp)
                         #j'ai pris la liberte de change la couleur de lightgreen en noir.
-        plt.plot(x_data, y_data, 'o', markersize=3, color='black')
+        plt.plot(x_data, y_data, 'o', markersize=3, color='lightgreen')
         plt.plot(xs, z, lw=3, color='red')
         for i in range(self.nb_features):
             plt.plot(xs, z2[i])
